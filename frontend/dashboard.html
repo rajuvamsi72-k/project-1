@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard - Expense Tracker</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Dashboard Container -->
+    <div class="dashboard-container">
+        <div class="dashboard">
+            <div class="header">
+                <div class="header-left">
+                    <h1>💰 Expense Tracker</h1>
+                    <p class="user-welcome" id="userWelcome">Welcome!</p>
+                </div>
+                <button class="btn-logout" onclick="logout()">Logout</button>
+            </div>
+
+            <!-- Total Expense Stats -->
+            <div class="stats-section">
+                <div class="stat-card">
+                    <h3>Total Expenses</h3>
+                    <p class="stat-amount" id="totalAmount">₹0.00</p>
+                    <p class="stat-info" id="expenseCount">0 expenses</p>
+                </div>
+            </div>
+
+            <!-- Add Expense Form -->
+            <div class="add-expense-section">
+                <h2>Add New Expense</h2>
+                <form id="addExpenseForm">
+                    <div class="form-row">
+                        <input type="text" id="expenseTitle" placeholder="Title" required>
+                        <input type="number" id="expenseAmount" placeholder="Amount" step="0.01" required>
+                    </div>
+                    <div class="form-row">
+                        <select id="expenseCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Food">🍽️ Food</option>
+                            <option value="Transport">🚗 Transport</option>
+                            <option value="Entertainment">🎬 Entertainment</option>
+                            <option value="Utilities">💡 Utilities</option>
+                            <option value="Shopping">🛍️ Shopping</option>
+                            <option value="Other">📌 Other</option>
+                        </select>
+                        <input type="date" id="expenseDate">
+                    </div>
+                    <button type="submit" class="btn-primary">Add Expense</button>
+                    <p id="addExpenseError" class="error-message"></p>
+                </form>
+            </div>
+
+            <!-- Expenses List -->
+            <div class="expenses-section">
+                <h2>Your Expenses</h2>
+                <div id="expensesList" class="expenses-list">
+                    <p class="loading">Loading expenses...</p>
+                </div>
+            </div>
+
+            <!-- Edit Modal -->
+            <div id="editModal" class="modal" style="display: none;">
+                <div class="modal-content">
+                    <span class="close" onclick="closeEditModal()">&times;</span>
+                    <h2>Edit Expense</h2>
+                    <form id="editExpenseForm">
+                        <input type="hidden" id="editExpenseId">
+                        <input type="text" id="editExpenseTitle" placeholder="Title" required>
+                        <input type="number" id="editExpenseAmount" placeholder="Amount" step="0.01" required>
+                        <select id="editExpenseCategory" required>
+                            <option value="">Select Category</option>
+                            <option value="Food">🍽️ Food</option>
+                            <option value="Transport">🚗 Transport</option>
+                            <option value="Entertainment">🎬 Entertainment</option>
+                            <option value="Utilities">💡 Utilities</option>
+                            <option value="Shopping">🛍️ Shopping</option>
+                            <option value="Other">📌 Other</option>
+                        </select>
+                        <input type="date" id="editExpenseDate">
+                        <button type="submit" class="btn-primary">Update Expense</button>
+                        <p id="editExpenseError" class="error-message"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
