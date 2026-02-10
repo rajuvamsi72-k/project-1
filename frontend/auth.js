@@ -1,4 +1,10 @@
-const API_URL = "http://localhost:5000/api";
+const API_URL = (() => {
+    const host = window.location.hostname;
+    if (host === "localhost" || host === "127.0.0.1") {
+        return "http://localhost:5000/api";
+    }
+    return "https://expense-tracker-so5l.onrender.com/api";
+})();
 
 // Initialize
 document.addEventListener("DOMContentLoaded", () => {
